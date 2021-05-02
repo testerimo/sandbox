@@ -1,0 +1,10 @@
+(define (expt b n)
+  (define (iter a b n)
+    (cond ((= n 0) a)
+          ((even? n) (iter a (square b) (/ n 2)))
+          (else (iter (* a b) b (dec n)))))
+  (iter 1 b n))
+
+(displayln (expt 3 4))
+(displayln (expt 2 10))
+(displayln (expt 11 13))
