@@ -4,6 +4,15 @@
 #include <string>
 using namespace std;
 
+int findBusByRoute(const set<string>& src_route, const map<int, set<string>>& bus_routes) {
+  for (const auto& [bus, route] : bus_routes) {
+    if (src_route == route) {
+      return bus;
+    }
+  }
+  return -1;
+}
+
 int main() {
   map<int, set<string>> bus_routes;
   int n;
@@ -21,14 +30,7 @@ int main() {
       new_route.insert(stop);
     }
 
-    int bus_found = -1;
-
-    for (const auto& [bus, route] : bus_routes) {
-      if (new_route == route) {
-        bus_found = bus;
-        break;
-      }
-    }
+    int bus_found = findBusByRoute(new_route, bus_routes);
 
     if (bus_found != -1) {
       cout << "Already exists for " << bus_found << endl;
