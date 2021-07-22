@@ -102,7 +102,7 @@ bool operator==(const Matrix& lhs, const Matrix& rhs) {
   }
 
   for (size_t row = 0; row < lhs.GetNumRows(); row++) {
-    for (size_t col = 0; col < rhs.GetNumRows(); col++) {
+    for (size_t col = 0; col < lhs.GetNumColumns(); col++) {
       if (lhs.At(row, col) != rhs.At(row, col)) {
         return false;
       }
